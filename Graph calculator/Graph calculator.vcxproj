@@ -24,6 +24,7 @@
     <ProjectGuid>{3520ff35-59d3-4fe6-bf31-e72a920e63d1}</ProjectGuid>
     <RootNamespace>Graphcalculator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Graphing calculator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,19 +141,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Graph calculator.h" />
+    <ClInclude Include="Graphing calculator.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graph calculator.cpp" />
+    <ClCompile Include="Graphing calculator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Graph calculator.rc" />
+    <ResourceCompile Include="Graphing calculator.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Graph calculator.ico" />
+    <Image Include="Graphing calculator.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

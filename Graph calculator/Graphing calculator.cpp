@@ -2,12 +2,14 @@
 //
 
 #include "framework.h"
-#include "Graph calculator.h"
+#include "Graphing calculator.h"
 
 using namespace std;
 
 #define MAX_LOADSTRING 100
 
+//string Eq = "(x^3)+(2*(y^3))-(5*x*y)=1"; 
+string Eq = "|1-((1-(4*z))^(1/2))|<1";
 
 appState StateInfo;
 bool drag = false;
@@ -40,7 +42,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: 여기에 코드를 입력합니다.
-    std::string Eq = "(x^2)+((x^2)*y)=(y^3)-(y/2)";
+
+    StateInfo.EqType = 1;
     incodeEq(Eq, StateInfo);
 
 
