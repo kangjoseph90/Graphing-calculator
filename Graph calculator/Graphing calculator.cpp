@@ -8,7 +8,7 @@ using namespace std;
 
 #define MAX_LOADSTRING 100
 
-string Eq = "|y|=|x|"; 
+string Eq = "(|x|^(5/2))+(y^3)-(2*(y^2))-(3*|x|*y)=1"; 
 //string Eq = "|1-((1-(4*z))^(1/2))|<1";
 
 appState StateInfo;
