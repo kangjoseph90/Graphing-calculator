@@ -12,7 +12,7 @@ struct Eqelem {
 };
 
 struct appState {
-    short GraphType = 1; // 0 - euclidean plane  1 - complex plane          default - 0
+    short GraphType = 0; // 0 - euclidean plane  1 - complex plane          default - 0
     short EqType = 1; // 1<<0 - eq 1<<1 - L 1<<2 - R            default - 1
     pair<int, int> screenSize = { 400,400 };
     pair<double, double> topleft = { -2,2 };
@@ -157,14 +157,14 @@ bool inGraph(pair<double, double> _in_, appState& StateInfo) { //|f-g|<epsilon*(
 }
 
 pair<double, double> grad(pair<double,double> _in_, double delta,appState& StateInfo) { // nabla(f(x,y))
-    double rx, ry; //partial d
+    double rx, ry; //partial derivatives
     if (StateInfo.GraphType == 0) {
-        double rx = (calcEq0(_in_.first + delta, _in_.second, StateInfo.Eq) - calcEq0(_in_.first - delta, _in_.second, StateInfo.Eq)) / (2 * delta);
-        double ry = (calcEq0(_in_.first, _in_.second + delta, StateInfo.Eq) - calcEq0(_in_.first, _in_.second - delta, StateInfo.Eq)) / (2 * delta);
+        rx = (calcEq0(_in_.first + delta, _in_.second, StateInfo.Eq) - calcEq0(_in_.first - delta, _in_.second, StateInfo.Eq)) / (2 * delta);
+        ry = (calcEq0(_in_.first, _in_.second + delta, StateInfo.Eq) - calcEq0(_in_.first, _in_.second - delta, StateInfo.Eq)) / (2 * delta);
     }
     else if (StateInfo.GraphType == 1) {
-        double rx = (calcEq1(_in_.first + delta, _in_.second, StateInfo.Eq) - calcEq1(_in_.first - delta, _in_.second, StateInfo.Eq)) / (2 * delta);
-        double ry = (calcEq1(_in_.first, _in_.second + delta, StateInfo.Eq) - calcEq1(_in_.first, _in_.second - delta, StateInfo.Eq)) / (2 * delta);
+        rx = (calcEq1(_in_.first + delta, _in_.second, StateInfo.Eq) - calcEq1(_in_.first - delta, _in_.second, StateInfo.Eq)) / (2 * delta);
+        ry = (calcEq1(_in_.first, _in_.second + delta, StateInfo.Eq) - calcEq1(_in_.first, _in_.second - delta, StateInfo.Eq)) / (2 * delta);
     }
     return { rx,ry };
 }
@@ -195,6 +195,7 @@ double calcEq0(double x,double y,vector<Eqelem>& Eq){ //euclidean
             s.push(res);
         }
     }
+    double data[4] = { x,y,s.top() };
     return s.top();
 }
 
@@ -220,12 +221,10 @@ double calcEq1(double Re,double Im, vector<Eqelem>& Eq) { //complex
             else if (item.data3 == '-') res = lnum - rnum;
             else if (item.data3 == '*') res = lnum * rnum;
             else if (item.data3 == '/') res = lnum / rnum;
-            else if (item.data3 == '^')
-                res = pow(lnum, rnum);
+            else if (item.data3 == '^') res = pow(lnum, rnum);
             s.push(res);
         }
     }
-    double data[4] = { X.real(),X.imag(),s.top().real(),s.top().imag() };
     return s.top().real();
 }
 

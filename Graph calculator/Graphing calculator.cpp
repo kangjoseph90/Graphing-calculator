@@ -8,8 +8,8 @@ using namespace std;
 
 #define MAX_LOADSTRING 100
 
-//string Eq = "(x^3)+(2*(y^3))-(5*x*y)=1"; 
-string Eq = "|1-((1-(4*z))^(1/2))|<1";
+string Eq = "|y|=|x|"; 
+//string Eq = "|1-((1-(4*z))^(1/2))|<1";
 
 appState StateInfo;
 bool drag = false;
@@ -43,7 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // TODO: 여기에 코드를 입력합니다.
 
-    StateInfo.EqType = 1;
+    StateInfo.GraphType = 0;
     incodeEq(Eq, StateInfo);
 
 
